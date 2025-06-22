@@ -133,7 +133,69 @@
 
   .classy-table tbody tr:last-child td {
     border-bottom: none;
-  }
+  },
+  .tile {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.avatar {
+  opacity: 1;
+  visibility: visible;
+  width: 80px;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+ .flow-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+      width: 250px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .step img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .step .code {
+      font-weight: bold;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .step .label {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .arrow {
+      font-size: 24px;
+      color: #999;
+      margin: 5px 0;
+    }
+
+    .sub-step {
+      font-size: 13px;
+      color: #0077cc;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -144,6 +206,7 @@
   <div class="tabs">
     <button class="tab-button active" onclick="showTab(0)">🌐 Environments</button>
     <button class="tab-button" onclick="showTab(1)">📦 Item List</button>
+	<button class="tab-button" onclick="showTab(2)">🔄 RFQ Flow</button>
   </div>
 
   <!-- Tab 1: Environments -->
@@ -153,76 +216,296 @@
   <!-- === LOCALHOST === -->
   <h2>💻 LOCALHOST <span class="env-label">http://localhost:4200</span></h2>
   <div class="section">
-    <div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4230')"><strong>Store Assistant</strong><div class="role">Department</div></div>
-	<div class="tile" onclick="openLink(http://localhost:4200/home/dashboard?token=&userId=4233')"><strong>Account Store</strong><div class="role">Department</div></div>
-    <div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4231')"><strong>Incharge Store</strong><div class="role">Department</div></div>
-	<div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4235')"><strong>Head Of Finance</strong><div class="role">Department</div></div>
-    <div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4232')"><strong>Procuring Entity</strong><div class="role">Department</div></div>
+  <div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4230')">
+    <strong>Store Assistant</strong>
+    <div class="role">Department</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&clotheType=BlazerShirt&facialHairType=BeardLight&eyeType=Default&skinColor=Light" alt="Store Assistant Avatar">
   </div>
-  <div class="section">
-    <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4228&vendorId=1477')"><strong>Yash Pareek</strong><div class="role">Vendor (Vertex Dynamics)</div></div>
-    <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4227&vendorId=1476')"><strong>Chetan Chauhan</strong><div class="role">Vendor (Prosperity Partners)</div></div>
-    <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4229&vendorId=1373')"><strong>Prerna Singh</strong><div class="role">Vendor (Oasis Commerce)</div></div>
-	 <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4243&vendorId=1518')"><strong>Aman Patel</strong><div class="role">Vendor</div></div>
-    <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4274&vendorId=1517')"><strong>Divya Rathi</strong><div class="role">Vendor</div></div>
-    <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4241&vendorId=1504')"><strong>Shashank Tiwari</strong><div class="role">Notified Agency</div></div>
-    <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4236&vendorId=1478')"><strong>Ishwor Mahato</strong><div class="role">Notified Agency</div></div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4233')">
+    <strong>Account Store</strong>
+    <div class="role">Department</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairTheCaesarSidePart&clotheType=GraphicShirt&facialHairType=MoustacheMagnum&eyeType=Wink&skinColor=Brown" alt="Account Store Avatar">
   </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4231')">
+    <strong>Incharge Store</strong>
+    <div class="role">Department</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&clotheType=Hoodie&facialHairType=Blank&eyeType=Happy&skinColor=Light" alt="Incharge Store Avatar">
+  </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4235')">
+    <strong>Head Of Finance</strong>
+    <div class="role">Department</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortWaved&clotheType=CollarSweater&facialHairType=BeardMajestic&eyeType=Default&skinColor=Brown" alt="Head Of Finance Avatar">
+  </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/dashboard?token=&userId=4232')">
+    <strong>Procuring Entity</strong>
+    <div class="role">Department</div>
+    <img class="avatar" src="https://avataaars.io/?topType=NoHair&clotheType=BlazerSweater&facialHairType=MoustacheFancy&eyeType=Squint&skinColor=DarkBrown" alt="Procuring Entity Avatar">
+  </div>
+</div>
+<div class="section">
+  <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4228&vendorId=1477')">
+    <strong>Yash Pareek</strong>
+    <div class="role">Vendor (Vertex Dynamics)</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardMedium&clotheType=BlazerSweater&eyeType=Default&skinColor=Light" alt="Yash Avatar">
+  </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4227&vendorId=1476')">
+    <strong>Chetan Chauhan</strong>
+    <div class="role">Vendor (Prosperity Partners)</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairDreads01&facialHairType=MoustacheFancy&clotheType=ShirtScoopNeck&eyeType=Wink&skinColor=Brown" alt="Chetan Avatar">
+  </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4229&vendorId=1373')">
+    <strong>Prerna Singh</strong>
+    <div class="role">Vendor (Oasis Commerce)</div>
+    <img class="avatar" src="https://avataaars.io/?topType=LongHairStraight&accessoriesType=Kurt&clotheType=GraphicShirt&eyeType=Happy&skinColor=Light" alt="Prerna Avatar">
+  </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4243&vendorId=1518')">
+    <strong>Aman Patel</strong>
+    <div class="role">Vendor</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairTheCaesar&facialHairType=BeardLight&clotheType=Hoodie&eyeType=Default&skinColor=Brown" alt="Aman Avatar">
+  </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4274&vendorId=1517')">
+    <strong>Divya Rathi</strong>
+    <div class="role">Vendor</div>
+    <img class="avatar" src="https://avataaars.io/?topType=LongHairCurly&accessoriesType=Round&clotheType=Overall&eyeType=EyeRoll&skinColor=Light" alt="Divya Avatar">
+  </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4241&vendorId=1504')">
+    <strong>Shashank Tiwari</strong>
+    <div class="role">Notified Agency</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardMajestic&clotheType=CollarSweater&eyeType=Squint&skinColor=Brown" alt="Shashank Avatar">
+  </div>
+
+  <div class="tile" onclick="openLink('http://localhost:4200/home/vendor-dashboard?token=&userId=4236&vendorId=1478')">
+    <strong>Ishwor Mahato</strong>
+    <div class="role">Notified Agency</div>
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&facialHairType=MoustacheMagnum&clotheType=ShirtCrewNeck&eyeType=Happy&skinColor=DarkBrown" alt="Ishwor Avatar">
+  </div>
+</div>
 
   <!-- === DEV === -->
   <h2>🧪 DEV <span class="env-label">http://10.68.231.99</span></h2>
-  <div class="section">
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4230')"><strong>Store Assistant</strong><div class="role">Department</div></div>
-	<div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4233')"><strong>Account Store</strong><div class="role">Department</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4231')"><strong>Incharge Store</strong><div class="role">Department</div></div>
-	  <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4235')"><strong>Head Of Finance</strong><div class="role">Department</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4232')"><strong>Procuring Entity</strong><div class="role">Department</div></div>
+ <div class="section">
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4230')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&clotheType=BlazerShirt&facialHairType=BeardLight&eyeType=Default&skinColor=Light" alt="Store Assistant Avatar">
+    <strong>Store Assistant</strong>
+    <div class="role">Department</div>
   </div>
-  <div class="section">
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4228&vendorId=1477')"><strong>Yash Pareek</strong><div class="role">Vendor(Vertex Dynamics)</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4227&vendorId=1476')"><strong>Chetan Chauhan</strong><div class="role">Vendor(Prosperity Partners)</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4229&vendorId=1373')"><strong>Prerna Singh
-</strong><div class="role">Vendor (Oasis Commerce)</div></div>
- <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4243&vendorId=1518')"><strong>Aman Patel</strong><div class="role">Vendor</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4274&vendorId=1517')"><strong>Divya Rathi</strong><div class="role">Vendor</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4241&vendorId=1504')"><strong>Shashank Tiwari</strong><div class="role">Notified Agency</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4236&vendorId=1478')"><strong>Ishwor Mahato</strong><div class="role">Notified Agency</div></div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4233')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairTheCaesarSidePart&clotheType=GraphicShirt&facialHairType=MoustacheMagnum&eyeType=Wink&skinColor=Brown" alt="Account Store Avatar">
+    <strong>Account Store</strong>
+    <div class="role">Department</div>
   </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4231')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&clotheType=Hoodie&facialHairType=Blank&eyeType=Happy&skinColor=Light" alt="Incharge Store Avatar">
+    <strong>Incharge Store</strong>
+    <div class="role">Department</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4235')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortWaved&clotheType=CollarSweater&facialHairType=BeardMajestic&eyeType=Default&skinColor=Brown" alt="Head Of Finance Avatar">
+    <strong>Head Of Finance</strong>
+    <div class="role">Department</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/dashboard?token=&userId=4232')">
+    <img class="avatar" src="https://avataaars.io/?topType=NoHair&clotheType=BlazerSweater&facialHairType=MoustacheFancy&eyeType=Squint&skinColor=DarkBrown" alt="Procuring Entity Avatar">
+    <strong>Procuring Entity</strong>
+    <div class="role">Department</div>
+  </div>
+</div>
+  <div class="section">
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4228&vendorId=1477')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardMedium&clotheType=BlazerSweater&eyeType=Default&skinColor=Light" alt="Yash Avatar">
+    <strong>Yash Pareek</strong>
+    <div class="role">Vendor (Vertex Dynamics)</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4227&vendorId=1476')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairDreads01&facialHairType=MoustacheFancy&clotheType=ShirtScoopNeck&eyeType=Wink&skinColor=Brown" alt="Chetan Avatar">
+    <strong>Chetan Chauhan</strong>
+    <div class="role">Vendor (Prosperity Partners)</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4229&vendorId=1373')">
+    <img class="avatar" src="https://avataaars.io/?topType=LongHairStraight&accessoriesType=Kurt&clotheType=GraphicShirt&eyeType=Happy&skinColor=Light" alt="Prerna Avatar">
+    <strong>Prerna Singh</strong>
+    <div class="role">Vendor (Oasis Commerce)</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4243&vendorId=1518')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairTheCaesar&facialHairType=BeardLight&clotheType=Hoodie&eyeType=Default&skinColor=Brown" alt="Aman Avatar">
+    <strong>Aman Patel</strong>
+    <div class="role">Vendor</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4274&vendorId=1517')">
+    <img class="avatar" src="https://avataaars.io/?topType=LongHairCurly&accessoriesType=Round&clotheType=Overall&eyeType=EyeRoll&skinColor=Light" alt="Divya Avatar">
+    <strong>Divya Rathi</strong>
+    <div class="role">Vendor</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4241&vendorId=1504')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardMajestic&clotheType=CollarSweater&eyeType=Squint&skinColor=Brown" alt="Shashank Avatar">
+    <strong>Shashank Tiwari</strong>
+    <div class="role">Notified Agency</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.99/home/vendor-dashboard?token=&userId=4236&vendorId=1478')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&facialHairType=MoustacheMagnum&clotheType=ShirtCrewNeck&eyeType=Happy&skinColor=DarkBrown" alt="Ishwor Avatar">
+    <strong>Ishwor Mahato</strong>
+    <div class="role">Notified Agency</div>
+  </div>
+</div>
 
   <!-- === DEV-UAT === -->
   <h2>🚧 DEV-UAT <span class="env-label">http://10.68.231.101</span></h2>
   <div class="section">
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4230')"><strong>Store Assistant</strong><div class="role">Department</div></div>
-	<div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4233')"><strong>Account Store</strong><div class="role">Department</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4231')"><strong>Incharge Store</strong><div class="role">Department</div></div>
-	<div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4235')"><strong>Head Of Finance</strong><div class="role">Department</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4232')"><strong>Procuring Entity</strong><div class="role">Department</div></div>
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4230')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&clotheType=BlazerShirt&facialHairType=BeardLight&eyeType=Default&skinColor=Light" alt="Store Assistant">
+    <strong>Store Assistant</strong>
+    <div class="role">Department</div>
   </div>
-  <div class="section">
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4228&vendorId=1477')"><strong>Yash Pareek</strong><div class="role">Vendor (Vertex Dynamics)</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4227&vendorId=1476')"><strong>Chetan Chauhan</strong><div class="role">Vendor(Prosperity Partners)</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4229&vendorId=1373')"><strong>Prerna Singh</strong><div class="role">Vendor (Oasis Commerce)</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4243&vendorId=1518')"><strong>Aman Patel</strong><div class="role">Vendor</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4274&vendorId=1517')"><strong>Divya Rathi</strong><div class="role">Vendor</div></div>
-	<div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4241&vendorId=1504')"><strong>Shashank Tiwari</strong><div class="role">Notified Agency</div></div>
-    <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4236&vendorId=1478')"><strong>Ishwor Mahato</strong><div class="role">Notified Agency</div></div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4233')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairCaesar&clotheType=GraphicShirt&facialHairType=BeardMedium&eyeType=Default&skinColor=Brown" alt="Account Store">
+    <strong>Account Store</strong>
+    <div class="role">Department</div>
   </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4231')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&clotheType=Hoodie&facialHairType=Blank&eyeType=Happy&skinColor=Light" alt="Incharge Store">
+    <strong>Incharge Store</strong>
+    <div class="role">Department</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4235')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortWaved&clotheType=CollarSweater&facialHairType=BeardMajestic&eyeType=Default&skinColor=Brown" alt="Head Of Finance">
+    <strong>Head Of Finance</strong>
+    <div class="role">Department</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/dashboard?token=&userId=4232')">
+    <img class="avatar" src="https://avataaars.io/?topType=NoHair&clotheType=BlazerSweater&facialHairType=MoustacheFancy&eyeType=Squint&skinColor=DarkBrown" alt="Procuring Entity">
+    <strong>Procuring Entity</strong>
+    <div class="role">Department</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4228&vendorId=1477')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardMedium&clotheType=BlazerSweater&eyeType=Default&skinColor=Light" alt="Yash Pareek">
+    <strong>Yash Pareek</strong>
+    <div class="role">Vendor (Vertex Dynamics)</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4227&vendorId=1476')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairDreads01&facialHairType=MoustacheFancy&clotheType=ShirtScoopNeck&eyeType=Wink&skinColor=Brown" alt="Chetan Chauhan">
+    <strong>Chetan Chauhan</strong>
+    <div class="role">Vendor (Prosperity Partners)</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4229&vendorId=1373')">
+    <img class="avatar" src="https://avataaars.io/?topType=LongHairStraight&accessoriesType=Blank&clotheType=GraphicShirt&eyeType=Happy&skinColor=Light" alt="Prerna Singh">
+    <strong>Prerna Singh</strong>
+    <div class="role">Vendor (Oasis Commerce)</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4243&vendorId=1518')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairTheCaesar&facialHairType=BeardLight&clotheType=Hoodie&eyeType=Default&skinColor=Brown" alt="Aman Patel">
+    <strong>Aman Patel</strong>
+    <div class="role">Vendor</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4274&vendorId=1517')">
+    <img class="avatar" src="https://avataaars.io/?topType=LongHairCurly&accessoriesType=Round&clotheType=Overall&eyeType=EyeRoll&skinColor=Light" alt="Divya Rathi">
+    <strong>Divya Rathi</strong>
+    <div class="role">Vendor</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4241&vendorId=1504')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardMajestic&clotheType=CollarSweater&eyeType=Squint&skinColor=Brown" alt="Shashank Tiwari">
+    <strong>Shashank Tiwari</strong>
+    <div class="role">Notified Agency</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.68.231.101/web/home/vendor-dashboard?token=&userId=4236&vendorId=1478')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&facialHairType=MoustacheMagnum&clotheType=ShirtCrewNeck&eyeType=Happy&skinColor=DarkBrown" alt="Ishwor Mahato">
+    <strong>Ishwor Mahato</strong>
+    <div class="role">Notified Agency</div>
+  </div>
+</div>
 
   <!-- === UAT === -->
   <h2>📦 UAT <span class="env-label">http://10.70.235.194</span></h2>
-  <div class="section">
-    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=7')"><strong>Store Assistant</strong><div class="role">Department</div></div>
-	<div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=4233')"><strong>Account Store</strong><div class="role">Department</div></div>
-    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=8')"><strong>Incharge Store</strong><div class="role">Department</div></div>
-	<div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=4235')"><strong>Head Of Finance</strong><div class="role">Department</div></div>
-    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=9')"><strong>Procuring Entity</strong><div class="role">Department</div></div>
-  </div>
  <div class="section">
-    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=2&vendorId=1')"><strong>Chetan Chauhan</strong><div class="role">Vendor(Prosperity Partners)</div></div>
-    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=3&vendorId=3')"><strong>Prerna Singh</strong><div class="role">Vendor</div></div>
-    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=4&vendorId=2')"><strong>Yash Pareek</strong><div class="role">Vendor</div></div>
-    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=5&vendorId=8')"><strong>Ishwor Mahato</strong><div class="role">Notified Agency</div></div>
-    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=6&vendorId=4')"><strong>Shashank Tiwari</strong><div class="role">Notified Agency</div></div>
+  <div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=7')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&clotheType=BlazerShirt&facialHairType=BeardLight&eyeType=Default&skinColor=Light" alt="Store Assistant">
+    <strong>Store Assistant</strong>
+    <div class="role">Department</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=4233')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairCaesar&clotheType=GraphicShirt&facialHairType=MoustacheMagnum&eyeType=Default&skinColor=Brown" alt="Account Store">
+    <strong>Account Store</strong>
+    <div class="role">Department</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=8')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&clotheType=Hoodie&facialHairType=Blank&eyeType=Happy&skinColor=Light" alt="Incharge Store">
+    <strong>Incharge Store</strong>
+    <div class="role">Department</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=4235')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortWaved&clotheType=CollarSweater&facialHairType=BeardMajestic&eyeType=Default&skinColor=Brown" alt="Head Of Finance">
+    <strong>Head Of Finance</strong>
+    <div class="role">Department</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.70.235.194/web/home/dashboard?token=&userId=9')">
+    <img class="avatar" src="https://avataaars.io/?topType=NoHair&clotheType=BlazerSweater&facialHairType=MoustacheFancy&eyeType=Squint&skinColor=DarkBrown" alt="Procuring Entity">
+    <strong>Procuring Entity</strong>
+    <div class="role">Department</div>
+  </div>
+</div>
+ <div class="section">
+    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=2&vendorId=1')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairDreads01&facialHairType=MoustacheFancy&clotheType=ShirtScoopNeck&eyeType=Wink&skinColor=Brown" alt="Chetan Chauhan">
+    <strong>Chetan Chauhan</strong>
+    <div class="role">Vendor (Prosperity Partners)</div>
+  </div>
+     <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=3&vendorId=3')">
+    <img class="avatar" src="https://avataaars.io/?topType=LongHairStraight&accessoriesType=Blank&clotheType=GraphicShirt&eyeType=Happy&skinColor=Light" alt="Prerna Singh">
+    <strong>Prerna Singh</strong>
+    <div class="role">Vendor</div>
+  </div>
+
+  <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=4&vendorId=2')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardMedium&clotheType=BlazerSweater&eyeType=Default&skinColor=Light" alt="Yash Pareek">
+    <strong>Yash Pareek</strong>
+    <div class="role">Vendor</div>
+  </div>
+  <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=5&vendorId=8')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&facialHairType=MoustacheMagnum&clotheType=ShirtCrewNeck&eyeType=Happy&skinColor=DarkBrown" alt="Ishwor Mahato">
+    <strong>Ishwor Mahato</strong>
+    <div class="role">Notified Agency</div>
+  </div>
+
+    <div class="tile" onclick="openLink('http://10.70.235.194/web/home/vendor-dashboard?token=&userId=6&vendorId=4')">
+    <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardMajestic&clotheType=CollarSweater&eyeType=Squint&skinColor=Brown" alt="Shashank Tiwari">
+    <strong>Shashank Tiwari</strong>
+    <div class="role">Notified Agency</div>
+  </div>
   </div>
   </div>
 
@@ -1188,7 +1471,96 @@
 </div>
 </div>
   </div>
+  <div class="tab-content">
 
+  <h2>Procurement Process Flow</h2>
+
+  <div class="flow-container">
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortWaved&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&skinColor=Light" alt="Avatar" />
+      <div class="code">M1</div>
+      <div class="label">Store Assistant</div>
+      <div class="name">Shashank Tiwari</div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&facialHairType=MoustacheMagnum&clotheType=Hoodie&eyeType=Default&skinColor=Brown" alt="Avatar" />
+      <div class="code">M2</div>
+      <div class="label">Account Store</div>
+      <div class="name">Vivek</div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=ShortHairShortFlat&facialHairType=BeardLight&clotheType=GraphicShirt&eyeType=Wink&skinColor=DarkBrown" alt="Avatar" />
+      <div class="code">C1</div>
+      <div class="label">Incharge Store</div>
+      <div class="name">Anuj Sharma</div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=LongHairStraight&accessoriesType=Prescription01&clotheType=BlazerSweater&eyeType=Default&skinColor=Light" alt="Avatar" />
+      <div class="code">C2</div>
+      <div class="label">Head Of Finance</div>
+      <div class="name">Bhavesh</div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=ShortHairDreads01&facialHairType=BeardMagestic&clotheType=BlazerShirt&eyeType=Happy&skinColor=Brown" alt="Avatar" />
+      <div class="code">A1</div>
+      <div class="label">Procuring Entity</div>
+      <div class="name">Ishwor Mahato</div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=Hijab&accessoriesType=Blank&clotheType=BlazerSweater&eyeType=Happy&skinColor=Light" alt="Avatar" />
+      <div class="code">Vendor</div>
+      <div class="label">Submit Quotation</div>
+      <div class="name">Prerna Singh</div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=ShortHairFrizzle&facialHairType=BeardLight&clotheType=Hoodie&eyeType=Default&skinColor=Brown" alt="Avatar" />
+      <div class="code">C1</div>
+      <div class="label">Select L1 Vendor</div>
+      <div class="name">Anuj Sharma</div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&facialHairType=BeardMagestic&clotheType=ShirtCrewNeck&eyeType=Wink&skinColor=DarkBrown" alt="Avatar" />
+      <div class="code">A1</div>
+      <div class="label">Generate Purchase Order</div>
+      <div class="sub-step">+ OTP Verification</div>
+      <div class="name">Ishwor Mahato</div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="step">
+      <img class="avatar" src="https://avataaars.io/?topType=Hijab&accessoriesType=Blank&clotheType=GraphicShirt&eyeType=Wink&skinColor=Light" alt="Avatar" />
+      <div class="code">Vendor</div>
+      <div class="label">Mark Delivery</div>
+      <div class="name">Prerna Singh</div>
+    </div>
+
+  </div>
+
+
+  </div>
   <script>
     function openLink(url) {
       window.open(url, '_blank');
