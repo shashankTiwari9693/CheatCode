@@ -196,6 +196,20 @@
       color: #0077cc;
       margin-top: 5px;
     }
+	 .token-inputs {
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #f1f1f1;
+      border-radius: 6px;
+    }
+
+    .token-inputs input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -212,6 +226,10 @@
   <!-- Tab 1: Environments -->
   <div class="tab-content active">
   <h1>🔐 Environment Login Tiles</h1>
+  <div class="token-inputs">
+    <label>Token: <input type="text" id="tokenInput" placeholder="Enter token"></label><br>
+    <label>Refresh Token: <input type="text" id="refreshTokenInput" placeholder="Enter refresh token"></label>
+  </div>
 
   <!-- === LOCALHOST === -->
   <h2>💻 LOCALHOST <span class="env-label">http://localhost:4200</span></h2>
@@ -1562,19 +1580,18 @@
 
   </div>
   <script>
-    function openLink(url) {
-      window.open(url, '_blank');
-    }
+    function openLink(baseUrl) {
+      const token = encodeURIComponent(document.getElementById('tokenInput').value.trim());
+      const refreshToken = encodeURIComponent(document.getElementById('refreshTokenInput').value.trim());
 
-    function showTab(index) {
-      const contents = document.querySelectorAll('.tab-content');
-      const buttons = document.querySelectorAll('.tab-button');
+      const url = new URL(baseUrl);
 
-      contents.forEach((c, i) => {
-        c.classList.toggle('active', i === index);
-        buttons[i].classList.toggle('active', i === index);
-      });
+      if (token) url.searchParams.set('token', token);
+      if (refreshToken) url.searchParams.set('refreshToken', refreshToken);
+
+     window.open(url.toString(), '_blank');
     }
+	
   </script>
 
 </body>
