@@ -1609,22 +1609,32 @@
 
 
   </div>
- <script>
- function openUserTile(tileElement, baseUrl) {
-  const token = encodeURIComponent(document.getElementById('tokenInput').value.trim());
-  const refreshToken = encodeURIComponent(document.getElementById('refreshTokenInput').value.trim());
+<script>
+  function openLink(baseUrl) {
+    const token = encodeURIComponent(document.getElementById('tokenInput')?.value.trim());
+    const refreshToken = encodeURIComponent(document.getElementById('refreshTokenInput')?.value.trim());
 
-  const userIdInput = tileElement.querySelector('.userIdInput');
-  const userId = encodeURIComponent(userIdInput?.value.trim());
+    const url = new URL(baseUrl);
+    if (token) url.searchParams.set('token', token);
+    if (refreshToken) url.searchParams.set('refreshToken', refreshToken);
 
-  const url = new URL(baseUrl);
-  if (token) url.searchParams.set('token', token);
-  if (refreshToken) url.searchParams.set('refreshToken', refreshToken);
-  if (userId) url.searchParams.set('userId', userId);
+    window.open(url.toString(), '_blank');
+  }
 
-  window.open(url.toString(), '_blank');
-}
+  function openUserTile(tileElement, baseUrl) {
+    const token = encodeURIComponent(document.getElementById('tokenInput')?.value.trim());
+    const refreshToken = encodeURIComponent(document.getElementById('refreshTokenInput')?.value.trim());
 
+    const userIdInput = tileElement.querySelector('.userIdInput');
+    const userId = encodeURIComponent(userIdInput?.value.trim());
+
+    const url = new URL(baseUrl);
+    if (token) url.searchParams.set('token', token);
+    if (refreshToken) url.searchParams.set('refreshToken', refreshToken);
+    if (userId) url.searchParams.set('userId', userId);
+
+    window.open(url.toString(), '_blank');
+  }
 </script>
 
 </body>
