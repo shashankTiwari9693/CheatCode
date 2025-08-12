@@ -306,6 +306,16 @@
     <div class="role">Notified Agency</div>
     <img class="avatar" src="https://avataaars.io/?topType=ShortHairSides&facialHairType=MoustacheMagnum&clotheType=ShirtCrewNeck&eyeType=Happy&skinColor=DarkBrown" alt="Ishwor Avatar">
   </div>
+<div class="tile" onclick="openUserTile(this, 'http://localhost:4200/home/dashboard')">
+  <strong>Dynamic User </strong>
+  <div class="role">Custom User</div>
+  
+  <!-- 🔽 User ID input specific to this tile -->
+
+
+  <img class="avatar" src="https://avataaars.io/?topType=ShortHairFrizzle&clotheType=BlazerShirt&facialHairType=BeardMedium&eyeType=Wink&skinColor=Brown" alt="Dynamic User Avatar">
+    <input type="text" class="userIdInput" placeholder="Enter User ID" onclick="event.stopPropagation();" />
+</div>
 </div>
 
   <!-- === DEV === -->
@@ -383,6 +393,16 @@
     <strong>Ishwor Mahato</strong>
     <div class="role">Notified Agency</div>
   </div>
+<div class="tile" onclick="openUserTile(this, 'http://10.68.231.99/home/dashboard')">
+  <strong>Dynamic User Tile</strong>
+  <div class="role">Custom User</div>
+
+  <img class="avatar" src="https://avataaars.io/?topType=ShortHairFrizzle&clotheType=BlazerShirt&facialHairType=BeardMedium&eyeType=Wink&skinColor=Brown" alt="Dynamic User Avatar">
+  
+  <!-- Prevent input click from triggering the tile -->
+  <input type="text" class="userIdInput" placeholder="Enter User ID" onclick="event.stopPropagation();" />
+</div>
+
 </div>
 
   <!-- === DEV-UAT === -->
@@ -461,6 +481,16 @@
     <strong>Ishwor Mahato</strong>
     <div class="role">Notified Agency</div>
   </div>
+  <div class="tile" onclick="openUserTile(this, 'http://10.68.231.101/home/dashboard')">
+  <strong>Dynamic User Tile</strong>
+  <div class="role">Custom User</div>
+  
+  <!-- 🔽 User ID input specific to this tile -->
+
+
+  <img class="avatar" src="https://avataaars.io/?topType=ShortHairFrizzle&clotheType=BlazerShirt&facialHairType=BeardMedium&eyeType=Wink&skinColor=Brown" alt="Dynamic User Avatar">
+    <input type="text" class="userIdInput" placeholder="Enter User ID" onclick="event.stopPropagation();" />
+</div>
 </div>
 
   <!-- === UAT === -->
@@ -1579,20 +1609,23 @@
 
 
   </div>
-  <script>
-    function openLink(baseUrl) {
-      const token = encodeURIComponent(document.getElementById('tokenInput').value.trim());
-      const refreshToken = encodeURIComponent(document.getElementById('refreshTokenInput').value.trim());
+ <script>
+ function openUserTile(tileElement, baseUrl) {
+  const token = encodeURIComponent(document.getElementById('tokenInput').value.trim());
+  const refreshToken = encodeURIComponent(document.getElementById('refreshTokenInput').value.trim());
 
-      const url = new URL(baseUrl);
+  const userIdInput = tileElement.querySelector('.userIdInput');
+  const userId = encodeURIComponent(userIdInput?.value.trim());
 
-      if (token) url.searchParams.set('token', token);
-      if (refreshToken) url.searchParams.set('refreshToken', refreshToken);
+  const url = new URL(baseUrl);
+  if (token) url.searchParams.set('token', token);
+  if (refreshToken) url.searchParams.set('refreshToken', refreshToken);
+  if (userId) url.searchParams.set('userId', userId);
 
-     window.open(url.toString(), '_blank');
-    }
-	
-  </script>
+  window.open(url.toString(), '_blank');
+}
+
+</script>
 
 </body>
 <footer style="text-align: center; padding: 15px; background-color: #f8f9fa; color: #333; font-size: 14px; border-top: 1px solid #ddd; margin-top: 40px;">
