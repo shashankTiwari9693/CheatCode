@@ -229,6 +229,7 @@
   <div class="token-inputs">
     <label>Token: <input type="text" id="tokenInput" placeholder="Enter token"></label><br>
     <label>Refresh Token: <input type="text" id="refreshTokenInput" placeholder="Enter refresh token"></label>
+	<button onclick="fetchToken()">🔄 Generate Token </button>
   </div>
 
   <!-- === LOCALHOST === -->
@@ -484,12 +485,11 @@
   <div class="tile" onclick="openUserTile(this, 'http://10.68.231.101/web/home/dashboard')">
   <strong>Dynamic User Tile</strong>
   <div class="role">Custom User</div>
-  
-  <!-- 🔽 User ID input specific to this tile -->
-
 
   <img class="avatar" src="https://avataaars.io/?topType=ShortHairFrizzle&clotheType=BlazerShirt&facialHairType=BeardMedium&eyeType=Wink&skinColor=Brown" alt="Dynamic User Avatar">
-    <input type="text" class="userIdInput" placeholder="Enter User ID" onclick="event.stopPropagation();" />
+  
+  <!-- Prevent input click from triggering the tile -->
+  <input type="text" class="userIdInput" placeholder="Enter User ID" onclick="event.stopPropagation();" />
 </div>
 </div>
 
@@ -1609,7 +1609,47 @@
 
 
   </div>
-<script>
+<<script>
+  // Fetch token from API and fill input fields
+  function fetchToken() {
+  fetch('http://10.68.231.100:30080/auth/api/v1/token/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "ssoToken": "abc123rajtoken",
+      "userId": 4227,
+      "ssoId": "CHETAN.CHAUHAN0108"
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then(data => {
+    // ✅ Correctly read from data.result.*
+    const accessToken = data?.result?.accessToken;
+    const refreshToken = data?.result?.refreshToken;
+
+    if (accessToken && refreshToken) {
+      document.getElementById('tokenInput').value = accessToken;
+      document.getElementById('refreshTokenInput').value = refreshToken;
+      alert("✅ Token and Refresh Token successfully fetched!");
+    } else {
+      alert("❌ Failed to get valid token data!");
+      console.error("Invalid token structure:", data);
+    }
+  })
+  .catch(error => {
+    alert("❌ Error fetching token. Check console.");
+    console.error("Fetch error:", error);
+  });
+}
+
+  // Open dashboard URL with token and refreshToken
   function openLink(baseUrl) {
     const token = encodeURIComponent(document.getElementById('tokenInput')?.value.trim());
     const refreshToken = encodeURIComponent(document.getElementById('refreshTokenInput')?.value.trim());
@@ -1620,22 +1660,8 @@
 
     window.open(url.toString(), '_blank');
   }
-
-  function openUserTile(tileElement, baseUrl) {
-    const token = encodeURIComponent(document.getElementById('tokenInput')?.value.trim());
-    const refreshToken = encodeURIComponent(document.getElementById('refreshTokenInput')?.value.trim());
-
-    const userIdInput = tileElement.querySelector('.userIdInput');
-    const userId = encodeURIComponent(userIdInput?.value.trim());
-
-    const url = new URL(baseUrl);
-    if (token) url.searchParams.set('token', token);
-    if (refreshToken) url.searchParams.set('refreshToken', refreshToken);
-    if (userId) url.searchParams.set('userId', userId);
-
-    window.open(url.toString(), '_blank');
-  }
 </script>
+
 
 </body>
 <footer style="text-align: center; padding: 15px; background-color: #f8f9fa; color: #333; font-size: 14px; border-top: 1px solid #ddd; margin-top: 40px;">
